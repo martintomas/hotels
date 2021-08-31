@@ -1,0 +1,17 @@
+{
+  "name": "hotels",
+  "private": false,
+  "license": "MIT",
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^5.0.0",
+    "@hotwired/turbo-rails": "^7.0.0-rc.3",
+    "stimulus": "^2.0.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^4.0.0"
+  }
+}

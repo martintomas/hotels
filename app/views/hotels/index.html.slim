@@ -1,0 +1,3 @@
+= turbo_frame_tag 'content' do
+  - @search_former.entities.each do |hotel|
+    == render HotelDetail::Component.new hotel, @search_former.forwarded_data

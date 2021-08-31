@@ -1,0 +1,12 @@
+body {
+  max-width: 70rem;
+  margin: 0rem auto;
+
+  .field_with_errors {
+    display: inline;
+
+    input {
+      border: 1px solid red !important;
+    }
+  }
+}

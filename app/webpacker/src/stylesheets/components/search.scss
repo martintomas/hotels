@@ -1,0 +1,45 @@
+.search-component {
+  margin: 2rem 1rem;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.2rem black;
+
+  input[type='submit'] {
+    padding: 0.5rem 2rem;
+    margin: 1rem 1rem;
+  }
+
+  .form-group {
+    display: inline;
+    position: relative;
+    margin: 1rem 1rem;
+
+    label {
+      position: absolute;
+      left: 5px;
+      top: -20px;
+      background-color: white;
+      padding: 0.1rem 0.5rem;
+      font-size: 90%;
+    }
+
+    input {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border: 1px solid black;
+    }
+  }
+
+  @media (max-width: 50rem) {
+    input[type='submit'] {
+      width: calc(100% - 3rem);
+    }
+
+    .form-group {
+      input {
+        width: calc(100% - 5rem);
+      }
+    }
+  }
+}
