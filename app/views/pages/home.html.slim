@@ -1,2 +1,4 @@
-= turbo_frame_tag 'searching', src: search_form_hotels_path
-= turbo_frame_tag 'content', src: hotels_path
+== render partial: 'hotels/search_form', locals: { search_former: Hotels::SearchFormer.new }
+
+= turbo_frame_tag 'content', src: hotels_path do
+  h1.loader_text = 'Loading Hotels ;)'

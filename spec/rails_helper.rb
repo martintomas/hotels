@@ -8,6 +8,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'factory_bot_rails'
+require 'view_component/test_helpers'
 require 'rspec/rails'
 require 'shoulda'
 
@@ -26,7 +27,11 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
+  config.include Rails.application.routes.url_helpers
   config.include FactoryBot::Syntax::Methods
+
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
 end
 
 Shoulda::Matchers.configure do |config|

@@ -1,6 +1,16 @@
 body {
-  max-width: 70rem;
-  margin: 0rem auto;
+  .container {
+    max-width: 70rem;
+    margin: 0 auto;
+  }
+
+  .loader_text, .no-data {
+    text-align: center;
+  }
+
+  label.required:after {
+    content: " *";
+  }
 
   .field_with_errors {
     display: inline;

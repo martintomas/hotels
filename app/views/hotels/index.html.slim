@@ -1,3 +1,7 @@
 = turbo_frame_tag 'content' do
-  - @search_former.entities.each do |hotel|
-    == render HotelDetail::Component.new hotel, @search_former.forwarded_data
+  - if @search_former.entities.exists?
+    - @search_former.entities.each do |hotel|
+      == render HotelDetail::Component.new hotel, @search_former.forwarded_data
+  - else
+    h1.no-data = t 'hotels.not_found'
+

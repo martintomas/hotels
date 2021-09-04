@@ -1,0 +1,20 @@
+.reservation-detail {
+  border: 1px solid black;
+  max-width: 50rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem auto;
+
+  span {
+    width: 30%;
+    max-width: 15rem;
+    display: inline-block;
+  }
+
+  @media (max-width: 50rem) {
+    span, .new-line {
+      display: block;
+      width: 100%;
+    }
+  }
+}

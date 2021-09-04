@@ -1,0 +1,7 @@
+.header-component
+  .logo
+    = link_to root_path do
+      span.first_letter = 'H'
+      span.rest = 'otels'
+  .links
+    = link_to I18n.t('components.header.check_reservations_link'), reservations_path

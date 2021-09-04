@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Hotels::SearchFormer do
-  let(:hotel) { create :hotel, number_of_rooms: 10, price: 10 }
+  let!(:hotel) { create :hotel, number_of_rooms: 10, price: 10 }
 
   subject do
     described_class.new arrival_date: 1.day.from_now, departure_date: 5.days.from_now, number_of_rooms: 3,
@@ -63,7 +63,7 @@ RSpec.describe Hotels::SearchFormer do
       end
 
       it 'returns all hotels' do
-        expect(subject.entities).to eq(Hotel.all)
+        expect(subject.entities).to eq(Hotel.all.order(:price))
       end
     end
 

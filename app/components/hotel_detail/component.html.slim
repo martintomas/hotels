@@ -1,8 +1,8 @@
 .hotel-detail
   .image
-    img src='https://via.placeholder.com/150'
+    img alt='hotel' src='https://via.placeholder.com/150'
   .content
     h3.name = hotel.name
     .city = hotel.city
-    .price = "Price per room is only: #{number_to_currency(hotel.price)}"
-    .link = link_to 'Make Reservation!', '#'
+    .price = t 'components.hotel_detail.price', price: number_to_currency(hotel.price)
+    .link = link_to I18n.t('components.hotel_detail.make_reservation'), new_reservation_path(search_params.merge(hotel_id: hotel.id))

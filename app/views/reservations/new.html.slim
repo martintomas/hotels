@@ -1,0 +1,14 @@
+= turbo_frame_tag 'content' do
+  .reservations.new
+    h2 = t 'reservations.title'
+    h4 = @reservation.hotel&.name
+    = form_for @reservation do |f|
+      = f.hidden_field :hotel_id
+      == render FormField::Component.new f, :text_field, key: :first_name, required: true
+      == render FormField::Component.new f, :text_field, key: :last_name, required: true
+      == render FormField::Component.new f, :email_field, key: :email, required: true
+      == render FormField::Component.new f, :phone_field, key: :phone, required: true
+      == render FormField::Component.new f, :date_field, key: :arrival_date, required: true
+      == render FormField::Component.new f, :date_field, key: :departure_date, required: true
+      == render FormField::Component.new f, :number_field, key: :number_of_rooms, required: true
+      = submit_tag I18n.t('reservations.submit_button')

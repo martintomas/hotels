@@ -5,19 +5,17 @@ class HotelsController < ApplicationController
     @search_former = Hotels::SearchFormer.new
   end
 
-  def search_form
-    @search_former = Hotels::SearchFormer.new
-  end
-
   def search
     @search_former = Hotels::SearchFormer.new search_params
     respond_to do |format|
       format.turbo_stream do
         if @search_former.valid?
-          render turbo_stream: [turbo_stream.replace('searching', template: '/hotels/search_form'),
+          render turbo_stream: [turbo_stream.replace('searching', partial: '/hotels/search_form',
+                                                                  locals: { search_former: @search_former }),
                                 turbo_stream.replace('content', template: '/hotels/index')]
         else
-          render turbo_stream: turbo_stream.replace('searching', template: '/hotels/search_form')
+          render turbo_stream: turbo_stream.replace('searching', partial: '/hotels/search_form',
+                                                                 locals: { search_former: @search_former })
         end
       end
     end

@@ -1,0 +1,4 @@
+= turbo_frame_tag 'content' do
+  .reservations.success
+    h3 = t 'reservations.success.title'
+    h4 = t 'reservations.success.subtitle', hotel_name: @reservation.hotel.name

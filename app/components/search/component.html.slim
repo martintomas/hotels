@@ -1,16 +1,7 @@
 .search-component
   = form_for search_former, url: search_hotels_path do |f|
-    .form-group
-      = f.date_field :arrival_date
-      = f.label :arrival_date
-    .form-group
-      = f.date_field :departure_date
-      = f.label :departure_date
-    .form-group
-      = f.number_field :number_of_rooms
-      = f.label :number_of_rooms
-    .form-group
-      = f.number_field :max_price_per_room
-      = f.label :max_price_per_room
-    = submit_tag 'Find'
-
+    == render FormField::Component.new f, :date_field, key: :arrival_date, required: true
+    == render FormField::Component.new f, :date_field, key: :departure_date, required: true
+    == render FormField::Component.new f, :number_field, key: :number_of_rooms, step: 1
+    == render FormField::Component.new f, :number_field, key: :max_price_per_room, step: 0.5
+    = submit_tag I18n.t('components.search.find_button')

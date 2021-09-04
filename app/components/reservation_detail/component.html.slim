@@ -1,0 +1,12 @@
+.reservation-detail
+  .hotel = t 'components.reservation_detail.hotel', name: reservation.hotel.name
+  span.first_name = reservation.first_name
+  span.last_name = reservation.last_name
+  .new-line
+  span.email = reservation.email
+  span.phone = reservation.phone
+  .new-line
+  span.arrival_date = t 'components.reservation_detail.arrival_date', date: reservation.arrival_date
+  span.departure_date = t 'components.reservation_detail.departure_date', date: reservation.departure_date
+  .number_of_rooms = t 'components.reservation_detail.number_of_rooms', number: reservation.number_of_rooms
+  .created_at = t 'components.reservation_detail.created_at', date: reservation.created_at

@@ -1,0 +1,36 @@
+.header-component {
+  background-color: black;
+  position: fixed;
+  color: white;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+
+  .logo {
+    display: inline;
+    margin-left: 1rem;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      .first_letter {
+        font-size: 125%;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .links {
+    float: right;
+    margin-right: 1rem;
+    font-size: 90%;
+
+    a {
+      vertical-align: middle;
+      text-decoration: none;
+      color: white;
+    }
+  }
+}

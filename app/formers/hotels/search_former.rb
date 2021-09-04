@@ -7,7 +7,7 @@ module Hotels
     attr_accessor :arrival_date, :departure_date, :number_of_rooms, :max_price_per_room
 
     validates :arrival_date, :departure_date, presence: true
-    validates :departure_date, date: { after: :arrival_date }
+    validates :departure_date, date: { after: :arrival_date }, if: -> { arrival_date.present? }
 
     def initialize(attributes = {})
       super attributes
@@ -17,7 +17,7 @@ module Hotels
     end
 
     def entities
-      return Hotel.all unless valid?
+      return Hotel.all.order(:price) unless valid?
 
       available_hotels
     end

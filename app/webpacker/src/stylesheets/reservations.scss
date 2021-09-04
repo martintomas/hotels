@@ -1,0 +1,38 @@
+.reservations.new {
+  margin: 2rem 1rem;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 90%;
+    margin: 0 0 1rem 0;
+  }
+
+  input[type='submit'] {
+    width: 100%;
+    max-width: 20rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem auto;
+    display: block;
+  }
+
+  .form-group {
+    input {
+      width: calc(100% - 5rem);
+      max-width: 28rem;
+    }
+  }
+}
+
+.reservations.index {
+  margin: 4rem 1rem;
+
+}
+
+.reservations.success {
+  margin: 4rem 1rem;
+  text-align: center;
+}

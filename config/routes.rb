@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   end
   resources :hotels, only: :index do
     collection do
-      get :search_form
       post :search
     end
   end
-  resources :reservations, only: %i[new create show]
+  resources :reservations, only: %i[index new create]
 end

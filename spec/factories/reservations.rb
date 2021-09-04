@@ -8,7 +8,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     arrival_date { Faker::Date.between(from: Date.today, to: 20.days.from_now ) }
     departure_date { Faker::Date.between(from: 1.month.from_now, to: 2.months.from_now ) }
-    number_of_rooms { Faker::Number.between(from: 20, to: 50) }
+    number_of_rooms { Faker::Number.between(from: 1, to: 3) }
 
     hotel
   end

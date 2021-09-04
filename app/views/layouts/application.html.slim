@@ -15,4 +15,7 @@ html[lang="#{I18n.locale}"]
     == csp_meta_tag
 
   body class="#{ controller.controller_name } #{ controller.action_name }"
-    == yield
+    == render Header::Component.new
+    .container == yield
+    == render Footer::Component.new
+

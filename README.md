@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dummy Hotel reservation app which shows advantages and disadvantages of using Hotwire.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run
+```bash
+cp .env.example .env
+bundle install
+yarn install
+rake db:create db:migrate db:seed
+```
+Double check that db variables are properly setup at your `.env` file.

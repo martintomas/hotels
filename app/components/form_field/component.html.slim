@@ -1,0 +1,5 @@
+.form-group
+  = f.public_send type, key, **kwargs
+  = f.label key, class: field_classes
+  - if f.object.errors[key].present?
+    p.error = f.object.errors.full_messages_for(key).first
