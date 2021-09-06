@@ -119,7 +119,6 @@ RSpec.describe Hotels::SearchFormer do
         create :reservation, hotel: hotel, arrival_date: 1.days.from_now, departure_date: 2.days.from_now, number_of_rooms: 6
         create :reservation, hotel: hotel, arrival_date: 3.days.from_now, departure_date: 4.days.from_now, number_of_rooms: 6
 
-        # Should have 4 rooms available. Only 6 rooms are reserved at any given time.
         expect(subject.entities).to include(hotel)
       end
     end

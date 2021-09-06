@@ -8,6 +8,9 @@ class Reservation < ApplicationRecord
 
   validates :first_name, :last_name, :phone, :email, :arrival_date, :departure_date, :number_of_rooms, presence: true
   validates :number_of_rooms, numericality: { greater_than: 0 }
+  validates :arrival_date, date: { after_or_equal_to: ->(_) { Time.current },
+                                   message: :not_future },
+                           if: -> { arrival_date.present? }
   validates :departure_date, date: { after: :arrival_date }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :phone, phony_plausible: true

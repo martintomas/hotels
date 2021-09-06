@@ -1,5 +1,5 @@
 = turbo_frame_tag 'content' do
-  - if @search_former.entities.exists?
+  - if @search_former.entities.present?
     - @search_former.entities.each do |hotel|
       == render HotelDetail::Component.new hotel, @search_former.forwarded_data
   - else

@@ -7,6 +7,9 @@ module Hotels
     attr_accessor :arrival_date, :departure_date, :number_of_rooms, :max_price_per_room
 
     validates :arrival_date, :departure_date, presence: true
+    validates :arrival_date, date: { after_or_equal_to: ->(_) { Time.current },
+                                     message: :not_future },
+                             if: -> { arrival_date.present? }
     validates :departure_date, date: { after: :arrival_date }, if: -> { arrival_date.present? }
 
     def initialize(attributes = {})
@@ -34,16 +37,11 @@ module Hotels
     private
 
     def available_hotels
-      hotels = Hotel.joins("LEFT JOIN (#{reservation_subquery}) AS r ON r.hotel_id = hotels.id")
-                    .where('hotels.number_of_rooms - coalesce(r.occupancy, 0) >= ?', number_of_rooms)
-      hotels = hotels.where('price <= ?', max_price_per_room) if max_price_per_room.present?
-      hotels.order :price
-    end
-
-    def reservation_subquery
-      Reservation.select('hotel_id, sum(number_of_rooms) as occupancy')
-                 .where('arrival_date < ? AND departure_date > ?', departure_date, arrival_date)
-                 .group(:hotel_id).to_sql
+      hotels = Queries::FreeRooms.new(from: arrival_date, to: departure_date).all
+                                 .select { |_hotel, free_rooms| free_rooms >= number_of_rooms.to_i }
+                                 .keys.sort_by(&:price)
+      hotels = hotels.select { |hotel| hotel.price <= max_price_per_room.to_f } if max_price_per_room.present?
+      hotels
     end
 
     def valid_date_from(value)

@@ -1,9 +1,18 @@
 en:
+  activemodel:
+    errors:
+      models:
+        hotels/search_former:
+          attributes:
+            arrival_date:
+              not_future: must be at future.
   activerecord:
     errors:
       models:
         reservation:
           attributes:
+            arrival_date:
+              not_future: must be at future.
             number_of_rooms:
               not_enough: crossed available capacity of hotel.
   hotels:

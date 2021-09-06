@@ -7,6 +7,6 @@ class Hotel < ApplicationRecord
   validates :number_of_rooms, :price, numericality: { greater_than: 0 }
 
   def free_rooms_at(from:, to:)
-    number_of_rooms - reservations.where('arrival_date < ? AND departure_date > ?', to, from).sum(:number_of_rooms)
+    Queries::FreeRooms.new(from: from, to: to).for_hotel id
   end
 end
