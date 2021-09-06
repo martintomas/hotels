@@ -113,6 +113,16 @@ RSpec.describe Hotels::SearchFormer do
         expect(subject.entities).not_to include(hotel)
       end
     end
+
+    context 'when multiple reservations exists in the same date range' do
+      it 'returns available hotel' do
+        create :reservation, hotel: hotel, arrival_date: 1.days.from_now, departure_date: 2.days.from_now, number_of_rooms: 6
+        create :reservation, hotel: hotel, arrival_date: 3.days.from_now, departure_date: 4.days.from_now, number_of_rooms: 6
+
+        # Should have 4 rooms available. Only 6 rooms are reserved at any given time.
+        expect(subject.entities).to include(hotel)
+      end
+    end
   end
 
   describe '#forwarded_data' do
